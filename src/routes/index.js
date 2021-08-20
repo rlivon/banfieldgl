@@ -95,7 +95,13 @@ router.get('/image/show/:photo_id', async (req, res) => {
     res.render('image_show', photo);
 });
 
-router.post('/image/add', async (req, res) => {
+router.get('/image/nuevo', async (req, res) => {
+    const photos = await Photo.find()
+    .lean();
+    res.render('image_nuevo', {photos});
+});
+
+router.post('/image/nuevo', async (req, res) => {
     const { title, description, categoria, precio } = req.body;
     const result = await cloudinary.v2.uploader.upload(req.file.path);
     const newPhoto = new Photo({
@@ -126,21 +132,44 @@ router.get('/image/editar/:photo_id', async (req, res) => {
     res.render('image_editar', photo);
 });
 
-router.post('/image/editar', async (req, res) => {
-    const { title, description, categoria, precio } = req.body;
+router.post('/image/editar/:photo_id', async (req, res) => {
+    const {title, description, categoria, precio, imageURL, public_id} = req.body;
+    const { photo_id } = req.params;
     //await cloudinary.v2.uploader.destroy(photo._id);
-    const result = await cloudinary.v2.uploader.upload(req.file.path);
+    //const result = await cloudinary.v2.uploader.upload(req.file.path);
     const editPhoto = Photo({
         title,
         description,
         categoria,
         precio,
-        imageURL: result.url,
-        public_id: result.public_id
+        imageURL,
+        public_id
+        //imageURL: result.url,
+        //public_id: result.public_id
     });
-    await editPhoto.save();
-    await fs.unlink(req.file.path);
-    res.redirect('/');
+    console.log(photo_id);
+    console.log(title);
+    console.log(description);
+    console.log(categoria);
+    console.log(precio);
+    console.log(imageURL);
+    console.log(public_id);
+
+    await editPhoto.update({
+        title: title
+      },
+    {   $set:{
+                title,
+                description,
+                categoria,
+                precio,
+                imageURL,
+                public_id
+            }
+    },{multi:true});
+
+    //await fs.unlink(req.file.path);
+    res.redirect('/image/add');
 
 });
 
