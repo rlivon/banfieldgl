@@ -126,6 +126,7 @@ router.get('/image/delete/:photo_id', async (req, res) => {
 });
 
 router.get('/image/editar/:photo_id', async (req, res) => {
+    //const result = await cloudinary.v2.uploader.upload(req.file.path);
     const { photo_id } = req.params;
     const photo = await Photo.findById(photo_id)
     .lean();
@@ -133,20 +134,29 @@ router.get('/image/editar/:photo_id', async (req, res) => {
 });
 
 router.post('/image/editar/:photo_id', async (req, res) => {
-    const {title, description, categoria, precio, imageURL, public_id} = req.body;
+    const {_id, title, description, categoria, precio, imageURL, public_id} = req.body;
     const { photo_id } = req.params;
-    //await cloudinary.v2.uploader.destroy(photo._id);
-    //const result = await cloudinary.v2.uploader.upload(req.file.path);
-    const editPhoto = Photo({
+    const photoEdit = {
         title,
         description,
         categoria,
         precio,
         imageURL,
         public_id
-        //imageURL: result.url,
-        //public_id: result.public_id
-    });
+    };
+    
+    if (typeof req.file == "undefined"){
+        console.log("No se eligió imagen");
+        
+
+    } else {
+        console.log("Se eligió imagen nueva");
+        await cloudinary.v2.uploader.destroy(_id);
+        const result = await cloudinary.v2.uploader.upload(req.file.path);
+        photoEdit.imageURL= result.url;
+        photoEdit.public_id= result.public_id;
+    }
+
     console.log(photo_id);
     console.log(title);
     console.log(description);
@@ -155,20 +165,16 @@ router.post('/image/editar/:photo_id', async (req, res) => {
     console.log(imageURL);
     console.log(public_id);
 
-    await editPhoto.update({
-        title: title
-      },
-    {   $set:{
-                title,
-                description,
-                categoria,
-                precio,
-                imageURL,
-                public_id
-            }
-    },{multi:true});
+    if (typeof req.file == "undefined"){
+        console.log("No se eligió imagen");
+    } else
+    {
+        console.log(req.file)
+        await fs.unlink(req.file.path);
+    };
 
-    //await fs.unlink(req.file.path);
+    await Photo.findOneAndUpdate( photo_id, photoEdit);
+
     res.redirect('/image/add');
 
 });

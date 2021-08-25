@@ -40,13 +40,14 @@
                     </div>                 
                     <div class="input-group md-3">
                         <div class="custom-file">
-                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" default="no">
                             <label for="inputGroupFile01"
                             class="custom-file-label">Elige Archivo</label>
                         </div>
                     </div>
                     <input type="hidden" name="imageURL" value = "{{imageURL}}">
                     <input type="hidden" name="public_id" value = "{{public_id}}">
+                    <input type="hidden" name="_id" value = "{{_id}}">
                     <button class="btn btn-primary">
                        Grabar
                     </button>
