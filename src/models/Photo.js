@@ -6,8 +6,8 @@ const Photo = new Schema({
     description: String,
     categoria: String,
     precio: String,
-    imageURL: String,
     urlVenta: String,
+    imageURL: String,
     public_id: String,
 });
 

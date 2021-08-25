@@ -102,13 +102,14 @@ router.get('/image/nuevo', async (req, res) => {
 });
 
 router.post('/image/nuevo', async (req, res) => {
-    const { title, description, categoria, precio } = req.body;
+    const { title, description, categoria, precio, urlVenta } = req.body;
     const result = await cloudinary.v2.uploader.upload(req.file.path);
     const newPhoto = new Photo({
         title,
         description,
         categoria,
         precio,
+        urlVenta,
         imageURL: result.url,
         public_id: result.public_id
     });
@@ -134,21 +135,20 @@ router.get('/image/editar/:photo_id', async (req, res) => {
 });
 
 router.post('/image/editar/:photo_id', async (req, res) => {
-    const {_id, title, description, categoria, precio, imageURL, public_id} = req.body;
+    const {_id, title, description, categoria, precio, urlVenta, imageURL, public_id} = req.body;
     const { photo_id } = req.params;
     const photoEdit = {
         title,
         description,
         categoria,
         precio,
+        urlVenta,
         imageURL,
         public_id
     };
     
     if (typeof req.file == "undefined"){
         console.log("No se eligió imagen");
-        
-
     } else {
         console.log("Se eligió imagen nueva");
         await cloudinary.v2.uploader.destroy(_id);
@@ -162,6 +162,7 @@ router.post('/image/editar/:photo_id', async (req, res) => {
     console.log(description);
     console.log(categoria);
     console.log(precio);
+    console.log(urlVenta);
     console.log(imageURL);
     console.log(public_id);
 
