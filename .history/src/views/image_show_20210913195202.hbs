@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div >
+<div class="margin:auto" >
+    <div class="card" style="align-items: center ;">
+        <img src="{{imageURL}}" style="width:60%;" alt="" class="card-img-top">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <h5 class="text-success"><font size=5>{{precio}}</font></h5>
+                <a class="btn btn-danger" href="{{urlVenta}}" role="button" target="_blank">Hacé tu pedido Ya!</a>
+                <br><br>
+                <a href="/" class="btn btn-primary">Volver</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>  Descripción</th>
+                    {{!-- <th>Categoria</th> --}}
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        {{!-- <td style="white-space: pre;">{{description}}</td> --}}
+                        <td><textarea name="mensaje" readonly rows="22"; id="mensaje" style="width:100%;">
+                            {{description}}</textarea>
+                        </td>
+                        {{!-- <td>{{categoria}}</td> --}}
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

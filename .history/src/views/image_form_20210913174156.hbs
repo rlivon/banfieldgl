@@ -1,0 +1,97 @@
+{{!-- Aquí se deben agregar los campos a ingresar --}}
+{{!-- 
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST"
+                enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="text" name="title"
+                        class="form-control" placeholder="Título">
+                    </div>
+                    <div class="form-group">
+                        <textarea style="resize: both;"name="description" class="form-control" 
+                        placeholder="Descripción"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="precio"
+                        class="form-control" placeholder="Precio">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="categoria"
+                        class="form-control" placeholder="Categoria">
+                    </div>                 
+                    <div class="input-group md-3">
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                            <label for="inputGroupFile01"
+                            class="custom-file-label">Elige Archivo</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                        Subir Foto
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+
+<style>
+    .estilotextarea {
+                        width:100%;
+                        height:80px;
+                        border: 1px;
+                        resize: both;
+                    }
+</style>
+
+<div class="row">
+    <div class="col-md-20">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <a href="/image/nuevo/" class="btn btn-primary">Producto Nuevo</a>
+                </div>
+                    <div class="row"> 
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Título</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Categoria</th>
+                                    <th>Operaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each photos}}
+                                    <tr>
+                                        <td><img src="{{imageURL}}" alt="" class="card-img-top"></td>
+                                        <td >{{title}}</td>
+                                        <td>
+                                            <textarea name="description" class=estilotextarea2 cols="120" rows="8" readonly placeholder="Descripción">{{description}}
+                                            </textarea>
+                                        </td>
+                                        <td>{{precio}}</td>
+                                        <td>{{categoria}}</td>
+                                        <td>
+                                            <div class="form-group text-center">
+                                                <div class="col-sm-2"></div>
+                                                    <a href="/image/editar/{{_id}}" class="btn btn-primary">Editar</a>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a href="/image/delete/{{_id}}" class="btn btn-danger">Borrar</a>                            
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

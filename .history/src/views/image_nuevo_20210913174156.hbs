@@ -1,0 +1,59 @@
+{{!-- Aquí se deben agregar los campos a ingresar --}}
+<style>
+    .estilotextarea {
+                        width:300px;
+                        height:80px;
+                        border: 1px; 
+                        resize: both;
+                    }
+</style>
+
+<div class="row">
+    <div class="col-md-15">
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST"
+                enctype="multipart/form-data">
+                    <div class="form-group">
+                        <b>Título</b>
+                        <input type="text" name="title"
+                        class="form-control" placeholder="Título" value ="{{title}}">
+                    </div>
+                    <b>Descripción</b>
+                    <div class="form-group">
+                        <textarea name="description" class=estilotextarea2 cols="150" rows="8"  placeholder="Descripción">{{description}}
+                        </textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <b>Precio</b>
+                        <input type="text" name="precio"
+                        class="form-control" placeholder="Precio" value ="{{precio}}">
+                    </div>
+                    <b>Categoria</b>
+                    <div class="form-group">
+                        <input type="text" name="categoria"
+                        class="form-control" placeholder="Categoria" value ="{{categoria}}">
+                    </div>
+                    <b>Publicación Mercado Libre</b>
+                    <div class="form-group">
+                        <input type="text" name="urlVenta"
+                        class="form-control" placeholder="Publicación Mercado Libre" value ="{{urlVenta}}">
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{imageURL}}" alt="" class="card-img-top">
+                    </div>                 
+                    <div class="input-group md-3">
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01">
+                            <label for="inputGroupFile01"
+                            class="custom-file-label">Elige Archivo</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">
+                       Grabar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
