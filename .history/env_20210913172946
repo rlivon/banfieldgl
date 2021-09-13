@@ -1,0 +1,5 @@
+MONGODB_URI=mongodb+srv://rlivon:J7QR0HusVMbd7we9@cluster0.pldkz.mongodb.net/BanfieldGL?authSource=admin&replicaSet=atlas-o5vzi6-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
+PORT=4000
+CLOUDINARY_CLOUDE_NAME=du04m1zid
+CLOUDINARY_API_KEY=239526498411524
+CLOUDINARY_API_SECRET=eCigT82gzRfGHsbLb0uJanFxeQ0

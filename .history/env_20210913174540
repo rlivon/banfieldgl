@@ -1,0 +1,5 @@
+MONGODB_URI=mongodb+srv://jorgeC:cicero123@cluster0.xdslo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+PORT=4000
+CLOUDINARY_CLOUDE_NAME=du04m1zid
+CLOUDINARY_API_KEY=239526498411524
+CLOUDINARY_API_SECRET=eCigT82gzRfGHsbLb0uJanFxeQ0
